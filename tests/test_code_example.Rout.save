@@ -1,0 +1,114 @@
+
+R version 3.0.1 (2013-05-16) -- "Good Sport"
+Copyright (C) 2013 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> ## Test code example 1 from 
+> ## Gjuvsland AB, Wang Y, Plahte E, Omholt SW (2013) Monotonicity is a key feature of genotype-phenotype maps. Submitted to Frontiers in Genetics
+> 
+> library(gpmap)
+Loading required package: isotone
+Loading required package: plyr
+Loading required package: ggplot2
+Loading required package: foreach
+Loading required package: doMC
+Loading required package: iterators
+Loading required package: parallel
+> data(GPmaps)
+> gp <- mouseweight
+> 
+> ## Tabulate genotypic values
+> cbind(gp$genotype,gp$values)
+  Locus_B Locus_A LG_JxSM_J
+1    B1B1    A1A1    36.839
+2    B1B2    A1A1    36.527
+3    B2B2    A1A1    33.824
+4    B1B1    A1A2    37.951
+5    B1B2    A1A2    35.898
+6    B2B2    A1A2    34.125
+7    B1B1    A2A2    34.118
+8    B1B2    A2A2    34.894
+9    B2B2    A2A2    31.234
+> 
+> ## Plot the GP map
+> plot(gp)		
+[[1]]
+
+> 
+> ## Compute degree of monotonicity
+> gp <- degree_of_monotonicity(gp)
+> gp$degree.monotonicity.locus
+        LG_JxSM_J
+Locus_B 0.8623747
+Locus_A 0.7107472
+> print(gp)
+1 GP map: 
+	 LG_JxSM_J 
+
+2 loci: 
+	 Locus_B Locus_A 
+
+Summary of genotypic values:
+   LG_JxSM_J    
+ Min.   :31.23  
+ 1st Qu.:34.12  
+ Median :34.89  
+ Mean   :35.05  
+ 3rd Qu.:36.53  
+ Max.   :37.95  
+
+
+Degree of monotonicity (m):
+     LG_JxSM_J
+[1,] 0.7919894
+
+> 
+> ## Quantify monotonicity by isotonic regression
+> gp <- decompose_monotone(gp)
+> print(gp)
+1 GP map: 
+	 LG_JxSM_J 
+
+2 loci: 
+	 Locus_B Locus_A 
+
+Summary of genotypic values:
+   LG_JxSM_J    
+ Min.   :31.23  
+ 1st Qu.:34.12  
+ Median :34.89  
+ Mean   :35.05  
+ 3rd Qu.:36.53  
+ Max.   :37.95  
+
+
+Degree of monotonicity (m):
+     LG_JxSM_J
+[1,] 0.7919894
+
+R-square from isotone regression:
+          LG_JxSM_J
+LG_JxSM_J 0.9701623
+
+> 
+> ## Plot decomposed GP map
+> plot(gp,decomposed=TRUE) 
+[[1]]
+
+> 
+> 
+> proc.time()
+   user  system elapsed 
+  1.916   0.080   2.005 

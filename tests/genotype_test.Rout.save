@@ -1,0 +1,77 @@
+
+R version 3.0.1 (2013-05-16) -- "Good Sport"
+Copyright (C) 2013 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(gpmap)
+Loading required package: isotone
+Loading required package: plyr
+Loading required package: ggplot2
+Loading required package: foreach
+Loading required package: doMC
+Loading required package: iterators
+Loading required package: parallel
+> enumerate_genotypes()
+  Locus_1
+1      11
+2      12
+3      22
+> enumerate_genotypes(2)
+  Locus_1 Locus_2
+1      11      11
+2      12      11
+3      22      11
+4      11      12
+5      12      12
+6      22      12
+7      11      22
+8      12      22
+9      22      22
+> try(enumerate_genotypes(3,locinames=c('A','B'),allelenames=c('L','H')))
+Error in enumerate_genotypes(3, locinames = c("A", "B"), allelenames = c("L",  : 
+  length(locinames) must be equal to nloci.
+> enumerate_genotypes(3,locinames=c('A','B','C'),allelenames=c('L','H'))
+    A  B  C
+1  LL LL LL
+2  LH LL LL
+3  HH LL LL
+4  LL LH LL
+5  LH LH LL
+6  HH LH LL
+7  LL HH LL
+8  LH HH LL
+9  HH HH LL
+10 LL LL LH
+11 LH LL LH
+12 HH LL LH
+13 LL LH LH
+14 LH LH LH
+15 HH LH LH
+16 LL HH LH
+17 LH HH LH
+18 HH HH LH
+19 LL LL HH
+20 LH LL HH
+21 HH LL HH
+22 LL LH HH
+23 LH LH HH
+24 HH LH HH
+25 LL HH HH
+26 LH HH HH
+27 HH HH HH
+> 
+> proc.time()
+   user  system elapsed 
+  0.724   0.032   0.758 

@@ -1,0 +1,504 @@
+
+R version 3.0.1 (2013-05-16) -- "Good Sport"
+Copyright (C) 2013 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "gpmap"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('gpmap')
+Loading required package: isotone
+Loading required package: plyr
+Loading required package: ggplot2
+Loading required package: foreach
+Loading required package: doMC
+Loading required package: iterators
+Loading required package: parallel
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("decompose_monotone")
+> ### * decompose_monotone
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: decompose_monotone
+> ### Title: Decompose genotype-phenotype map(s) using monotone regression
+> ### Aliases: decompose_monotone decompose_monotone_single
+> 
+> ### ** Examples
+> 
+> data(GPmaps)
+> 
+> #Additive GP map is monotone so monoR2=1 and values.mono=values
+> decompose_monotone(A)
+1 GP map: 
+	 A 
+
+2 loci: 
+	 Locus_1 Locus_2 
+
+Summary of genotypic values:
+       A     
+ Min.   :-2  
+ 1st Qu.:-1  
+ Median : 0  
+ Mean   : 0  
+ 3rd Qu.: 1  
+ Max.   : 2  
+
+
+R-square from isotone regression:
+  A
+A 1
+
+> 
+> #Pure AxA epistasis map
+> decompose_monotone(AA)
+1 GP map: 
+	 AA 
+
+2 loci: 
+	 Locus_1 Locus_2 
+
+Summary of genotypic values:
+       AA    
+ Min.   :-1  
+ 1st Qu.: 0  
+ Median : 0  
+ Mean   : 0  
+ 3rd Qu.: 0  
+ Max.   : 1  
+
+
+R-square from isotone regression:
+    AA
+AA 0.3
+
+> 
+> #two-locus example in Cheverud & Routman (1995)
+> decompose_monotone(mouseweight)
+1 GP map: 
+	 LG_JxSM_J 
+
+2 loci: 
+	 Locus_B Locus_A 
+
+Summary of genotypic values:
+   LG_JxSM_J    
+ Min.   :31.23  
+ 1st Qu.:34.12  
+ Median :34.89  
+ Mean   :35.05  
+ 3rd Qu.:36.53  
+ Max.   :37.95  
+
+
+R-square from isotone regression:
+          LG_JxSM_J
+LG_JxSM_J 0.9701623
+
+> 
+> #decompose four random 3-locus GP maps
+> set.seed(0)
+> randomGP <- rnorm(3^2*4)
+> dim(randomGP) <- c(9,4)
+> decompose_monotone(generate_gpmap(randomGP))
+4 GP maps: 
+	 GPmap_1 GPmap_2 GPmap_3 GPmap_4 
+
+2 loci: 
+	 Locus_1 Locus_2 
+
+Summary of genotypic values:
+    GPmap_1             GPmap_2            GPmap_3            GPmap_4        
+ Min.   :-1.539950   Min.   :-1.14766   Min.   :-1.23754   Min.   :-1.28460  
+ 1st Qu.:-0.326233   1st Qu.:-0.79901   1st Qu.:-0.05711   1st Qu.:-0.64947  
+ Median :-0.005767   Median :-0.29922   Median : 0.37740   Median :-0.43331  
+ Mean   : 0.131621   Mean   :-0.04648   Mean   : 0.20234   Mean   :-0.21239  
+ 3rd Qu.: 1.262954   3rd Qu.: 0.25222   3rd Qu.: 0.50361   3rd Qu.: 0.04673  
+ Max.   : 1.329799   Max.   : 2.40465   Max.   : 1.08577   Max.   : 1.15191  
+
+
+R-square from isotone regression:
+       GPmap_1   GPmap_2   GPmap_3   GPmap_4
+[1,] 0.6737283 0.8819748 0.6167951 0.9154536
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("degree_of_monotonicity")
+> ### * degree_of_monotonicity
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: degree_of_monotonicity
+> ### Title: Degree of monotonicity of GP map
+> ### Aliases: degree_of_monotonicity degree_of_monotonicity_single
+> 
+> ### ** Examples
+> 
+> data(GPmaps)
+> 
+> #Additive GP map is monotone 
+> degree_of_monotonicity(A)
+1 GP map: 
+	 A 
+
+2 loci: 
+	 Locus_1 Locus_2 
+
+Summary of genotypic values:
+       A     
+ Min.   :-2  
+ 1st Qu.:-1  
+ Median : 0  
+ Mean   : 0  
+ 3rd Qu.: 1  
+ Max.   : 2  
+
+
+Degree of monotonicity (m):
+     A
+[1,] 1
+
+> 
+> #Pure AxA epistasis map
+> degree_of_monotonicity(AA)
+1 GP map: 
+	 AA 
+
+2 loci: 
+	 Locus_1 Locus_2 
+
+Summary of genotypic values:
+       AA    
+ Min.   :-1  
+ 1st Qu.: 0  
+ Median : 0  
+ Mean   : 0  
+ 3rd Qu.: 0  
+ Max.   : 1  
+
+
+Degree of monotonicity (m):
+     AA
+[1,]  0
+
+> 
+> #two-locus example in Cheverud & Routman (1995)
+> degree_of_monotonicity(mouseweight)
+1 GP map: 
+	 LG_JxSM_J 
+
+2 loci: 
+	 Locus_B Locus_A 
+
+Summary of genotypic values:
+   LG_JxSM_J    
+ Min.   :31.23  
+ 1st Qu.:34.12  
+ Median :34.89  
+ Mean   :35.05  
+ 3rd Qu.:36.53  
+ Max.   :37.95  
+
+
+Degree of monotonicity (m):
+     LG_JxSM_J
+[1,] 0.7919894
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("enumerate_genotypes")
+> ### * enumerate_genotypes
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: enumerate_genotypes
+> ### Title: Function for enumerating genotypes for N biallelic loci
+> ### Aliases: enumerate_genotypes
+> 
+> ### ** Examples
+> 
+> #genotypes for a single locus
+> enumerate_genotypes()
+  Locus_1
+1      11
+2      12
+3      22
+> 
+> #genotypes for two loci "A" and "B", with alleles named "H" and "L"
+> enumerate_genotypes(2,c("A","B"),c("H","L"))
+   A  B
+1 HH HH
+2 HL HH
+3 LL HH
+4 HH HL
+5 HL HL
+6 LL HL
+7 HH LL
+8 HL LL
+9 LL LL
+> 
+> #genotypes for the two-locus example in Cheverud & Routman (1995)
+> enumerate_genotypes(2,c("D7Mit17","D1Mit7"),rbind(c('A1','A2'),c('B1','B2')))
+  D7Mit17 D1Mit7
+1    A1A1   B1B1
+2    A1A2   B1B1
+3    A2A2   B1B1
+4    A1A1   B1B2
+5    A1A2   B1B2
+6    A2A2   B1B2
+7    A1A1   B2B2
+8    A1A2   B2B2
+9    A2A2   B2B2
+> 
+> 
+> 
+> cleanEx()
+> nameEx("generate_gpmap")
+> ### * generate_gpmap
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: generate_gpmap
+> ### Title: Function for creating genotype-phenotype (GP) maps
+> ### Aliases: generate_gpmap gpmap
+> 
+> ### ** Examples
+> 
+> #inter- and intra-locus additive GPmap with two loci 
+> generate_gpmap(c(-2,1,0,-1,0,1,0,1,2),mapnames="Additive") 
+1 GP map: 
+	 Additive 
+
+2 loci: 
+	 Locus_1 Locus_2 
+
+Summary of genotypic values:
+    Additive      
+ Min.   :-2.0000  
+ 1st Qu.: 0.0000  
+ Median : 0.0000  
+ Mean   : 0.2222  
+ 3rd Qu.: 1.0000  
+ Max.   : 2.0000  
+
+
+> 
+> #two-locus GP map with AxA epistasis for loci named A and B
+> generate_gpmap(c(-1,0,1,0,0,0,1,0,-1),locinames=c("A","B"),mapnames="AxA")
+1 GP map: 
+	 AxA 
+
+2 loci: 
+	 A B 
+
+Summary of genotypic values:
+      AxA    
+ Min.   :-1  
+ 1st Qu.: 0  
+ Median : 0  
+ Mean   : 0  
+ 3rd Qu.: 0  
+ Max.   : 1  
+
+
+> 
+> #random GP map with 3 loci
+> set.seed(0)
+> generate_gpmap(rnorm(27))
+1 GP map: 
+	 GPmap_1 
+
+3 loci: 
+	 Locus_1 Locus_2 Locus_3 
+
+Summary of genotypic values:
+    GPmap_1         
+ Min.   :-1.539950  
+ 1st Qu.:-0.368872  
+ Median :-0.005767  
+ Mean   : 0.095828  
+ 3rd Qu.: 0.633601  
+ Max.   : 2.404653  
+
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("monotone_regression")
+> ### * monotone_regression
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: monotone_regression
+> ### Title: Perform monotone regression on a genotype-phenotype (GP) map
+> ### Aliases: monotone_regression
+> 
+> ### ** Examples
+> 
+> data(GPmaps)
+> 
+> #Additive GP map is monotone 
+> monotone_regression(A,c(2,2))
+
+Call:
+activeSet(isomat = apart, mySolver = "LS", y = gpmap$values, 
+    weights = rep(1, 3^nloci))
+
+Loss value: 0 
+
+Active set fit:
+  Observed Values Fitted Values
+1              -2            -2
+2              -1            -1
+3               0             0
+4              -1            -1
+5               0             0
+6               1             1
+7               0             0
+8               1             1
+9               2             2
+
+> 
+> #Pure AxA epistasis map
+> monotone_regression(AA,c(2,2))
+
+Call:
+activeSet(isomat = apart, mySolver = "LS", y = gpmap$values, 
+    weights = rep(1, 3^nloci))
+
+Loss value: 2.8 
+
+Active set fit:
+  Observed Values Fitted Values
+1               1          -0.2
+2               0          -0.2
+3              -1          -0.2
+4               0          -0.2
+5               0           0.0
+6               0           0.0
+7              -1          -0.2
+8               0           0.0
+9               1           1.0
+
+> 
+> #two-locus example in Cheverud & Routman (1995)
+> monotone_regression(mouseweight,c(1,1))
+
+Call:
+activeSet(isomat = apart, mySolver = "LS", y = gpmap$values, 
+    weights = rep(1, 3^nloci))
+
+Loss value: 0.9646605 
+
+Active set fit:
+  Observed Values Fitted Values
+1          36.839        37.395
+2          36.527        36.527
+3          33.824        33.974
+4          37.951        37.395
+5          35.898        35.898
+6          34.125        33.974
+7          34.118        34.506
+8          34.894        34.506
+9          31.234        31.234
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot.gpmap")
+> ### * plot.gpmap
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot.gpmap
+> ### Title: Functions for creating lineplots of genotype-phenotype (GP) maps
+> ### Aliases: plot.gpmap plot.gpmap.decomp.mono
+> 
+> ### ** Examples
+> 
+> data(GPmaps)
+> 
+> #plot additive gpmap
+> plot(A)
+[[1]]
+
+> 
+> #plot decomposition of GPmap from Cheverud & Routman (1995)
+> decomp <- decompose_monotone(mouseweight)
+> plot(decomp, decomposed=TRUE)
+[[1]]
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("print.gpmap")
+> ### * print.gpmap
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: print.gpmap
+> ### Title: Print function for 'gpmap' objects
+> ### Aliases: print.gpmap
+> 
+> ### ** Examples
+> 
+> data(GPmaps)
+> print(A)
+1 GP map: 
+	 A 
+
+2 loci: 
+	 Locus_1 Locus_2 
+
+Summary of genotypic values:
+       A     
+ Min.   :-2  
+ 1st Qu.:-1  
+ Median : 0  
+ Mean   : 0  
+ 3rd Qu.: 1  
+ Max.   : 2  
+
+
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  2.376 0.04 2.724 0.248 0.016 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

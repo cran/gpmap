@@ -1,0 +1,4 @@
+S3method(print, gpmap)
+S3method(plot, gpmap)
+
+export(decompose_monotone, decompose_monotone_single, degree_of_monotonicity, degree_of_monotonicity_single, enumerate_genotypes, generate_gpmap, monotone_regression, partial_genotype_order)
