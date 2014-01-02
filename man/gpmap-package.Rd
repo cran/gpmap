@@ -17,9 +17,8 @@
 
   In version 0.1 which is released as part of the publication of Gjuvsland \emph{et al.} (2013) 
   we have implemented functionality for studying monotonicity Gjuvsland \emph{et al.} (2011) of GP maps. 
-  The package utilizes \href{http://cran.r-project.org/package=isotone}{\pkg{isotone}} package for monotone regression, 
-  and the packages \href{http://cran.r-project.org/package=foreach}{\pkg{foreach}} and 
-  \href{http://cran.r-project.org/package=doMC}{\pkg{doMC}} for speeding up computations.
+  The package utilizes the \href{http://cran.r-project.org/package=isotone}{\pkg{isotone}} package for monotone regression, 
+  and the \href{http://cran.r-project.org/package=foreach}{\pkg{foreach}} package for parallel computation.
   
    
   The package consists of the following high-level functions :
@@ -29,7 +28,7 @@
 }
 
 \author{
-    Arne B. Gjuvsland <arne.gjuvsland@umb.no> and Yunpeng Wang <yunpeng.wng@gmail.com>
+    Arne B. Gjuvsland <arne.gjuvsland@nmbu.no> and Yunpeng Wang <yunpeng.wng@gmail.com>
 }
 
 \references{
@@ -41,7 +40,8 @@ Gjuvsland AB, Vik JO, Woolliams JA, Omholt SW (2011) Order-preserving principles
 	genotype-phenotype maps ensure high additive proportions of genetic variance.
 	Journal of Evolutionary Biology 24(10):2269-2279 [\href{http://onlinelibrary.wiley.com/doi/10.1111/j.1420-9101.2011.02358.x/full}{link}]
 
-Gjuvsland AB, Wang Y, Plahte E, Omholt SW (2013) Monotonicity is a key feature of genotype-phenotype maps. Submitted to Frontiers in Genetics
+Gjuvsland AB, Wang Y, Plahte E and Omholt SW (2013) Monotonicity is a key feature of genotype-phenotype maps. 
+Front. Genet. 4:216. doi: 10.3389/fgene.2013.00216 [\href{http://www.frontiersin.org/Journal/10.3389/fgene.2013.00216/full}{link}]
 
 Hansen T & Wagner GP (2001) Modeling genetic Architecture: A Multilinear Theory of gene Interaction. 
 	Theoretical Population Biology 59:61-86 [\href{http://dx.doi.org/10.1006/tpbi.2000.1508}{link}]

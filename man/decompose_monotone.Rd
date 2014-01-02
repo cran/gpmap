@@ -8,20 +8,20 @@ Functions for decomposing genotype-phenotype (GP) maps with \eqn{N} biallelic lo
 
 \usage{
 decompose_monotone(gpmap)
-decompose_monotone_single(gpmap, parallel=FALSE)
+decompose_monotone_single(gpmap)
 }
 
 \arguments{
   \item{gpmap}{ A \code{\link{gpmap}} object }
-  \item{parallel}{ Indicating whether computations should be run in parallel }
 }
 
 \details{
 \code{decompose_monotone} works for any \code{\link{gpmap}} object (\code{values} is \eqn{(3^N)xK} matrix of genotypic values) 
 and calls the internal function \code{decompose_monotone_single} for each column. \code{decompose_monotone_single} takes a 
 \code{\link{gpmap}} object with a single set of genotypic values (\eqn{K=1}), loops through all \eqn{2^N} possible
-combinations of plusalleles, calls \code{\link{monotone_regression}} and identifies the best fit. If \code{parallell=TRUE} then
-computations are run in parallel on multiple cores.
+combinations of plusalleles, calls \code{\link{monotone_regression}} and identifies the best fit. The code uses the 
+\href{http://cran.r-project.org/package=foreach}{\code{foreach}} package and will run in parallel if a \emph{parallel backend} is registered (see 
+\href{http://cran.r-project.org/package=foreach}{\code{foreach}} documentation).
 
 }
 
@@ -35,11 +35,12 @@ The input \code{\link{gpmap}} is returned with two added elements
 \references{
 Leeuw J, Hornik K and Mair P (2009) Isotone Optimization in R: Pool-Adjacent-Violators Algorithm (PAVA) and Active Set Methods. Journal of Statistical Software 32(5) [\href{http://www.jstatsoft.org/v32/i05}{link}]
 
-Gjuvsland AB, Wang Y, Plahte E, Omholt SW (2013) Monotonicity is a key feature of genotype-phenotype maps. Submitted to Frontiers in Genetics
+Gjuvsland AB, Wang Y, Plahte E and Omholt SW (2013) Monotonicity is a key feature of genotype-phenotype maps. 
+Front. Genet. 4:216. doi: 10.3389/fgene.2013.00216 [\href{http://www.frontiersin.org/Journal/10.3389/fgene.2013.00216/full}{link}]
 }
 
 \author{
-Arne B. Gjuvsland <arne.gjuvsland@umb.no> and Yunpeng Wang <yunpeng.wng@gmail.com>
+Arne B. Gjuvsland <arne.gjuvsland@nmbu.no> and Yunpeng Wang <yunpeng.wng@gmail.com>
 }
 
 \examples{

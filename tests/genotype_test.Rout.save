@@ -1,7 +1,7 @@
 
 R version 3.0.1 (2013-05-16) -- "Good Sport"
 Copyright (C) 2013 The R Foundation for Statistical Computing
-Platform: x86_64-pc-linux-gnu (64-bit)
+Platform: i686-pc-linux-gnu (32-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -20,9 +20,6 @@ Loading required package: isotone
 Loading required package: plyr
 Loading required package: ggplot2
 Loading required package: foreach
-Loading required package: doMC
-Loading required package: iterators
-Loading required package: parallel
 > enumerate_genotypes()
   Locus_1
 1      11
@@ -74,4 +71,4 @@ Error in enumerate_genotypes(3, locinames = c("A", "B"), allelenames = c("L",  :
 > 
 > proc.time()
    user  system elapsed 
-  0.724   0.032   0.758 
+  0.624   0.048   0.668 

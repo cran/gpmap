@@ -19,7 +19,7 @@ Monotonicity measures are printed if available.
 }
 
 \author{
-Arne B. Gjuvsland <arne.gjuvsland@umb.no> and Yunpeng Wang <yunpeng.wng@gmail.com>
+Arne B. Gjuvsland <arne.gjuvsland@nmbu.no> and Yunpeng Wang <yunpeng.wng@gmail.com>
 }
 
 \examples{

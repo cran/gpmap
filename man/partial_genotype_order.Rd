@@ -27,13 +27,13 @@ Each row vector in the matrix contains the genotype indexes of one comparable pa
 \references{
 Gjuvsland AB, Vik JO, Woolliams JA, Omholt SW (2011) Order-preserving principles underlying 
 	genotype-phenotype maps ensure high additive proportions of genetic variance.
-	Journal of Evolutionary Biology 24(10):2269-2279
+	Journal of Evolutionary Biology 24(10):2269-2279 [\href{http://onlinelibrary.wiley.com/doi/10.1111/j.1420-9101.2011.02358.x/full}{link}]
 
 Lynch M & Walsh B (1998) Genetics and Analysis of Quantitative Traits, Sunderland, MA: Sinauer Associates
 }
 
 \author{
-Arne B. Gjuvsland <arne.gjuvsland@umb.no> and Yunpeng Wang <yunpeng.wng@gmail.com>
+Arne B. Gjuvsland <arne.gjuvsland@nmbu.no> and Yunpeng Wang <yunpeng.wng@gmail.com>
 }
 
 

@@ -29,13 +29,14 @@ This partial ordering is then used together with the GP map itself as input to t
 }
 \references{
 Leeuw J, Hornik K and Mair P (2009) Isotone Optimization in R: Pool-Adjacent-Violators 
-Algorithm (PAVA) and Active Set Methods. Journal of Statistical Software 32(5) ( \href{http://www.jstatsoft.org/v32/i05}{link} )
+Algorithm (PAVA) and Active Set Methods. Journal of Statistical Software 32(5) [\href{http://www.jstatsoft.org/v32/i05}{link}]
 
-Gjuvsland AB, Wang Y, Plahte E, Omholt SW (in prep) Monotonicity is a key measure of genotype-phenotype maps.
+Gjuvsland AB, Wang Y, Plahte E and Omholt SW (2013) Monotonicity is a key feature of genotype-phenotype maps. 
+Front. Genet. 4:216. doi: 10.3389/fgene.2013.00216 [\href{http://www.frontiersin.org/Journal/10.3389/fgene.2013.00216/full}{link}]
 }
 
 \author{
-Arne B. Gjuvsland <arne.gjuvsland@umb.no> and Yunpeng Wang <yunpeng.wng@gmail.com>
+Arne B. Gjuvsland <arne.gjuvsland@nmbu.no> and Yunpeng Wang <yunpeng.wng@gmail.com>
 }
 
 \examples{

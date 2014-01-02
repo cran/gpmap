@@ -12,16 +12,13 @@ decompose_monotone <- function(gpmap) {
   if (nmaps == 1) {
     dmap <- NULL
     if (nloci > 3) {
-      register_cores()
-      dmap <- decompose_monotone_single(gpmap, parallel = TRUE)
+      dmap <- decompose_monotone_single(gpmap)
     }
     else {
       dmap <- decompose_monotone_single(gpmap)
     }
   }
   else {
-    tmp  <- NULL
-    register_cores()
     tmp <- foreach (i = 1:nmaps) %dopar% {
       decompose_monotone_single(generate_gpmap(gpmap$values[, i]))
     }
@@ -42,7 +39,7 @@ decompose_monotone <- function(gpmap) {
 
 
 ## Low-level functions ##
-decompose_monotone_single <- function(gpmap, parallel = FALSE) {
+decompose_monotone_single <- function(gpmap) {
   
   nloci <- gpmap$nloci
 
@@ -52,16 +49,9 @@ decompose_monotone_single <- function(gpmap, parallel = FALSE) {
     tmpargs[[paste('Locus', i, sep = "")]] <- c(1, 2)
   }
   plusallele <- do.call(expand.grid, tmpargs)
-  if (!parallel) {
-    decomposed.all  <- foreach (i = 1:2^nloci) %do% {
-      monotone_regression(gpmap, plusallele[i, ])
-    }
-  }
-  else {
-    decomposed.all  <- foreach (i = 1:2^nloci) %dopar% {
-      monotone_regression(gpmap, plusallele[i, ])
-    }   
-  }
+  decomposed.all  <- foreach (i = 1:2^nloci) %dopar% {
+    monotone_regression(gpmap, plusallele[i, ])
+  }   
   decomposed <- decomposed.all[[which.min(laply(decomposed.all, 
                                                 function(x) return(x$fval)))]]
   return(list("values.mono" = matrix(decomposed$x, ncol = 1),
@@ -69,21 +59,6 @@ decompose_monotone_single <- function(gpmap, parallel = FALSE) {
 }
 
 ### Low-level functions ### 
-
-register_cores <- function() {
-  ## Note:
-  #       1. When system has more than 4 cores only 4 are registered otherwise all
-  #       cores are registered.
-  #       2. Only the multicore backend is used.
-
-  ncores <- parallel::detectCores()
-  if (ncores > 4) {
-    registerDoMC(cores = 4)
-  }
-  else {
-    registerDoMC(cores = ncores)
-  }
-}
 
 monotone_regression <- function(gpmap, plusallele) {
   # Wrapper of the monotone regression functions. 
