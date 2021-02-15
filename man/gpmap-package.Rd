@@ -17,8 +17,8 @@
 
   In version 0.1 which is released as part of the publication of Gjuvsland \emph{et al.} (2013) 
   we have implemented functionality for studying monotonicity Gjuvsland \emph{et al.} (2011) of GP maps. 
-  The package utilizes the \href{http://cran.r-project.org/package=isotone}{\pkg{isotone}} package for monotone regression, 
-  and the \href{http://cran.r-project.org/package=foreach}{\pkg{foreach}} package for parallel computation.
+  The package utilizes the \href{https://cran.r-project.org/package=isotone}{\pkg{isotone}} package for monotone regression, 
+  and the \href{https://cran.r-project.org/package=foreach}{\pkg{foreach}} package for parallel computation.
   
    
   The package consists of the following high-level functions :
@@ -34,20 +34,20 @@
 \references{
 
 Cheverud JM & Routman EJ (1995) Epistasis and Its Controbution to Genetic Variance Components. 
-	Genetics 139:1455-1461 [\href{http://www.genetics.org/content/139/3/1455.abstract}{link}]
+	Genetics 139:1455-1461 [\href{https://www.genetics.org/content/139/3/1455.abstract}{link}]
 
 Gjuvsland AB, Vik JO, Woolliams JA, Omholt SW (2011) Order-preserving principles underlying 
 	genotype-phenotype maps ensure high additive proportions of genetic variance.
-	Journal of Evolutionary Biology 24(10):2269-2279 [\href{http://onlinelibrary.wiley.com/doi/10.1111/j.1420-9101.2011.02358.x/full}{link}]
+	Journal of Evolutionary Biology 24(10):2269-2279 [\href{https://onlinelibrary.wiley.com/doi/full/10.1111/j.1420-9101.2011.02358.x}{link}]
 
 Gjuvsland AB, Wang Y, Plahte E and Omholt SW (2013) Monotonicity is a key feature of genotype-phenotype maps. 
-Front. Genet. 4:216. doi: 10.3389/fgene.2013.00216 [\href{http://www.frontiersin.org/Journal/10.3389/fgene.2013.00216/full}{link}]
+Front. Genet. 4:216. doi: 10.3389/fgene.2013.00216 [\href{https://www.frontiersin.org/articles/10.3389/fgene.2013.00216/full}{link}]
 
 Hansen T & Wagner GP (2001) Modeling genetic Architecture: A Multilinear Theory of gene Interaction. 
-	Theoretical Population Biology 59:61-86 [\href{http://dx.doi.org/10.1006/tpbi.2000.1508}{link}]
+	Theoretical Population Biology 59:61-86 [\href{https://www.sciencedirect.com/science/article/pii/S0040580900915089}{link}]
 
 Leeuw J, Hornik K and Mair P (2009) Isotone Optimization in R: Pool-Adjacent-Violators 
-Algorithm (PAVA) and Active Set Methods. Journal of Statistical Software 32(5) [\href{http://www.jstatsoft.org/v32/i05}{link}]
+Algorithm (PAVA) and Active Set Methods. Journal of Statistical Software 32(5) [\href{https://www.jstatsoft.org/v32/i05}{link}]
 
 Lynch M & Walsh B (1998) Genetics and Analysis of Quantitative Traits, Sunderland, MA: Sinauer Associates
 }

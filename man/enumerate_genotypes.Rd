@@ -42,7 +42,7 @@ then the second locus, and so on:
 \references{
 Gjuvsland AB, Vik JO, Woolliams JA, Omholt SW (2011) Order-preserving principles 
 underlying genotype-phenotype maps ensure high additive proportions of genetic 
-variance. Journal of Evolutionary Biology 24(10):2269-2279 [\href{http://onlinelibrary.wiley.com/doi/10.1111/j.1420-9101.2011.02358.x/full}{link}]
+variance. Journal of Evolutionary Biology 24(10):2269-2279 [\href{https://onlinelibrary.wiley.com/doi/full/10.1111/j.1420-9101.2011.02358.x}{link}]
 
 }
 \author{

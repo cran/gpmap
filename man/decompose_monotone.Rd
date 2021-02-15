@@ -3,7 +3,7 @@
 \alias{decompose_monotone_single}
 \title{Decompose genotype-phenotype map(s) using monotone regression }
 \description{
-Functions for decomposing genotype-phenotype (GP) maps with \eqn{N} biallelic loci using monotone regression from the \href{http://cran.r-project.org/package=isotone}{\code{isotone}} package.
+Functions for decomposing genotype-phenotype (GP) maps with \eqn{N} biallelic loci using monotone regression from the \href{https://cran.r-project.org/package=isotone}{\code{isotone}} package.
 }
 
 \usage{
@@ -20,8 +20,8 @@ decompose_monotone_single(gpmap)
 and calls the internal function \code{decompose_monotone_single} for each column. \code{decompose_monotone_single} takes a 
 \code{\link{gpmap}} object with a single set of genotypic values (\eqn{K=1}), loops through all \eqn{2^N} possible
 combinations of plusalleles, calls \code{\link{monotone_regression}} and identifies the best fit. The code uses the 
-\href{http://cran.r-project.org/package=foreach}{\code{foreach}} package and will run in parallel if a \emph{parallel backend} is registered (see 
-\href{http://cran.r-project.org/package=foreach}{\code{foreach}} documentation).
+\href{https://cran.r-project.org/package=foreach}{\code{foreach}} package and will run in parallel if a \emph{parallel backend} is registered (see 
+\href{https://cran.r-project.org/package=foreach}{\code{foreach}} documentation).
 
 }
 
@@ -33,10 +33,10 @@ The input \code{\link{gpmap}} is returned with two added elements
 }
 
 \references{
-Leeuw J, Hornik K and Mair P (2009) Isotone Optimization in R: Pool-Adjacent-Violators Algorithm (PAVA) and Active Set Methods. Journal of Statistical Software 32(5) [\href{http://www.jstatsoft.org/v32/i05}{link}]
+Leeuw J, Hornik K and Mair P (2009) Isotone Optimization in R: Pool-Adjacent-Violators Algorithm (PAVA) and Active Set Methods. Journal of Statistical Software 32(5) [\href{https://www.jstatsoft.org/v32/i05}{link}]
 
 Gjuvsland AB, Wang Y, Plahte E and Omholt SW (2013) Monotonicity is a key feature of genotype-phenotype maps. 
-Front. Genet. 4:216. doi: 10.3389/fgene.2013.00216 [\href{http://www.frontiersin.org/Journal/10.3389/fgene.2013.00216/full}{link}]
+Front. Genet. 4:216. doi: 10.3389/fgene.2013.00216 [\href{https://www.frontiersin.org/articles/10.3389/fgene.2013.00216/full}{link}]
 }
 
 \author{

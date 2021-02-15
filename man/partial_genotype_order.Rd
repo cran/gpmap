@@ -15,7 +15,7 @@ inequalities. }
 
 \details{
 
-In short a partial order on a set is a binary relation defining a parwise ordering of some pairs of elements in the set, for a formal definiton see \url{http://en.wikipedia.org/wiki/Partial_order}. 
+In short a partial order on a set is a binary relation defining a parwise ordering of some pairs of elements in the set, for a formal definiton see \url{https://en.wikipedia.org/wiki/Partial_order}. 
 In the partial order on the set of genotypes defined in Gjuvsland et al. (2011) the comparable pairs of genotypes are equal at every locus except one, 
 while all other pairs of genotypes are incomparable. This partial ordering of genotype space is implicit in the regression on gene content 
 (the number of alleles with a given index in each genotype) used for decomposition of tne genotypic value in quantitative genetics (see e.g. Lynch and Walsh page 65).
@@ -27,7 +27,7 @@ Each row vector in the matrix contains the genotype indexes of one comparable pa
 \references{
 Gjuvsland AB, Vik JO, Woolliams JA, Omholt SW (2011) Order-preserving principles underlying 
 	genotype-phenotype maps ensure high additive proportions of genetic variance.
-	Journal of Evolutionary Biology 24(10):2269-2279 [\href{http://onlinelibrary.wiley.com/doi/10.1111/j.1420-9101.2011.02358.x/full}{link}]
+	Journal of Evolutionary Biology 24(10):2269-2279 [\href{https://onlinelibrary.wiley.com/doi/full/10.1111/j.1420-9101.2011.02358.x}{link}]
 
 Lynch M & Walsh B (1998) Genetics and Analysis of Quantitative Traits, Sunderland, MA: Sinauer Associates
 }

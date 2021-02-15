@@ -73,5 +73,5 @@ monotone_regression <- function(gpmap, plusallele) {
   return(fit.ls)
 }
 
-#treat ´m´,´d´ and ´i´ as global during checking (to avoid NOTE)
+#treat m,d and i as global during checking (to avoid NOTE)
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("i","m","d"))
